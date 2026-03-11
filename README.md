@@ -2,7 +2,7 @@
 This repository contains some code on my CUDA labs.
 
 # Contents 
-- [Element-wise vector minimum]()
+- [Element-wise vector minimum](#lab-1)
 
 ## <a href="#lab-1" id="lab-1" name="lab-1">Element-wise vector minimum</a>
 
