@@ -29,7 +29,22 @@ int main() {
     cudaMalloc(&gpu_b, sizeof(double) * n);
     cudaMemcpy(gpu_b, b, sizeof(double) * n, cudaMemcpyHostToDevice);
     
+    cudaEvent_t start, stop;
+    cudaEventCreate(&start)
+    cudaEventCreate(&stop);
+
+    cudaEventRecord(start);
     min_kernel<<<32768, 1024>>>(gpu_a, gpu_b, n);
+    cudaEventRecord(stop);
+    cudaEventSynchronize(stop);
+
+    float ms = 0;
+    cudaEventElapsedTime(&ms, start, stop);
+    fprintf(stderr, "Time: %f ms\n", ms);
+
+    cudaEventDestroy(start);
+    cudaEventDestroy(stop);
+
     cudaMemcpy(a, gpu_a, sizeof(double) * n, cudaMemcpyDeviceToHost);
 
     for(int i = 0; i < n; i++) 

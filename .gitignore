@@ -1,1 +1,6 @@
 *.asc
+venv
+*.png
+*.data
+*.pdf
+*.docx

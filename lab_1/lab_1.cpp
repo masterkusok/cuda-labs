@@ -1,4 +1,5 @@
 #include <iostream>
+#include <chrono>
 
 int main() {
     int n;
@@ -17,6 +18,8 @@ int main() {
         b.push_back(temp);
     }
 
+    auto start = std::chrono::high_resolution_clock::now();
+
     for(int i = 0; i < n; i++) {
         temp = a[i];
         if (a[i] > b[i]) {
@@ -24,6 +27,9 @@ int main() {
         }
         std::cout << temp << " ";
     }
+
+    auto end = std::chrono::high_resolution_clock::now();
+    std::cerr << "Time: " << std::chrono::duration<double, std::milli>(end - start).count() << " ms\n";
 
     return 0;
 }
